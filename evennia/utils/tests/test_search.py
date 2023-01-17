@@ -96,3 +96,11 @@ class TestSearch(EvenniaTest):
         object.db.an_attribute = "some value"
         found = search_object_attribute(key="an_attribute", value="wrong value")
         self.assertEqual(len(found), 0, errors)
+        
+   def test_search_objects_by_typeclass_room(self):
+        """Test searching for objects of typeclass Room"""
+        room, errors = DefaultRoom.create("A room")
+        found = search_typeclass("Room")
+        self.assertEqual(len(found), 1, errors)
+        self.assertEqual(room.key, found[0].key, errors)
+
