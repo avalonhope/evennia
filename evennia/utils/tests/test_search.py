@@ -100,14 +100,14 @@ class TestSearch(EvenniaTest):
     def test_search_objects_by_typeclass_room(self):
         """Test searching for objects of typeclass Room"""
         room, errors = DefaultRoom.create("A room")
-        found = search_typeclass("Room")
+        found = search_typeclass("evennia.objects.objects.DefaultRoom")
         self.assertEqual(len(found), 1, errors)
         self.assertEqual(room.key, found[0].key, errors)
         
     def test_search_objects_by_typeclass_character(self):
         """Test searching for objects of typeclass Character"""
         character, errors = DefaultCharacter.create("An adventurer")
-        found = search_typeclass("Character")
+        found = search_typeclass("evennia.objects.objects.DefaultCharacter")
         self.assertEqual(len(found), 1, errors)
         self.assertEqual(character.key, found[0].key, errors)
         
